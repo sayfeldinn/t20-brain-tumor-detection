@@ -25,6 +25,8 @@ df.to_csv("split_manifest.csv", index=False)
 print(df.groupby(["split", "label"]).size().unstack())
 ```
 
-Paths in the manifest are relative to the `T20/` folder root (`data/Training/...`).
-Colab: upload `data/` to Drive and adjust `ROOT` accordingly (keep the same manifest
-rows; only the prefix differs — document the prefix rule in the notebook header).
+Paths in the manifest are relative to the repo root (`data/Training/...`).
+The dataset is committed to the repo, so after `git clone` the paths work as-is.
+Colab: clone the repo and prefix with the clone directory (see TEAMMATES.md §2):
+`df["path"] = "/content/t20-brain-tumor-detection/" + df["path"]` — keep the same
+manifest rows; only the prefix differs (document the prefix rule in the notebook header).

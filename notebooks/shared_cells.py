@@ -37,11 +37,13 @@ seed_everything()
 # seed_everything()
 
 # ============================================================
-# CELL C — manifest loading (paths are relative to T20/ root)
+# CELL C — manifest loading (paths are relative to T20/ repo root)
 # ------------------------------------------------------------
-# On Colab: upload data/ to Drive and prefix paths once, e.g.
-#   df["path"] = "/content/drive/MyDrive/T20/" + df["path"]
-# Local: use as-is. Never re-generate the split.
+# The dataset (data/) and the manifest are both IN THE REPO — after
+# `git clone`, paths just work if the notebook runs from the repo root.
+# On Colab: clone the repo (TEAMMATES.md §2) and prefix once, e.g.
+#   df["path"] = "/content/t20-brain-tumor-detection/" + df["path"]
+# Never re-generate the split.
 # import pandas as pd
 # df = pd.read_csv("split_manifest.csv")
 # train_df = df[df.split == "train"].reset_index(drop=True)

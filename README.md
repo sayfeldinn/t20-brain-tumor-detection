@@ -14,8 +14,8 @@ T20/
 ├── report_T20.pdf
 ├── requirements.txt
 ├── app/            # FastAPI service (main.py, config.py)
-├── data/           # dataset (not in git — synced via Drive)
-├── model/          # model_T20.pt / model_T20.keras (not in git — synced via Drive)
+├── data/           # dataset — 7,200 images, committed to git
+├── model/          # model_T20.pt / model_T20.keras — final models, committed to git
 ├── notebooks/      # pytorch_T20.ipynb, tensorflow_T20.ipynb (committed with outputs)
 ├── results/        # metrics_pytorch.json, metrics_tensorflow.json
 └── split_manifest.csv
@@ -29,6 +29,7 @@ uvicorn app.main:app --port 8000
 ```
 
 ## Git rules
-- Private repo. Never commit `data/`, model files, checkpoints, or secrets (see `.gitignore`).
+- Private repo. **Everything lives in git** — data, models, notebooks (team decision: no Drive).
 - Notebooks are committed **with outputs saved**.
-- Model artifacts travel via Google Drive; added locally only when building the final ZIP.
+- Never commit checkpoints (`runs/`, `*.ckpt`, `*.pth`) or secrets (`kaggle.json`) — see `.gitignore`.
+- ⚠️ GitHub rejects single files >100 MB — verify model size before `git add model/`.

@@ -17,16 +17,25 @@ git clone https://github.com/sayfeldinn/t20-brain-tumor-detection.git
 cd t20-brain-tumor-detection
 ```
 
-Already there: `split_manifest.csv` (the shared split — **never resplit**), `notebooks/shared_cells.py`
+Already there: **`data/` (the full 7,200-image dataset — comes with the clone, no Drive needed)**,
+`split_manifest.csv` (the shared split — **never resplit**), `notebooks/shared_cells.py`
 (paste its cells **verbatim** into your notebook), `app/` (API — not yours), `results/metrics_<yourfw>.json`
 (fill one entry per run).
 
 ## 2. Colab setup (10 min)
 
 1. Runtime → **Change runtime type → T4 GPU** (same GPU as the other framework — fairness rule).
-2. Upload `data/` to your Google Drive (folder `T20/data/...`), mount Drive in Colab.
+2. Get the data in Colab — pick one:
+   - **Option A (repo clone, recommended):** in Colab,
+     ```python
+     # private repo: use a GitHub personal access token (repo scope) — do NOT hardcode it
+     # in a pushed notebook; paste at runtime or use userdata/Colab secrets
+     !git clone https://<TOKEN>@github.com/sayfeldinn/t20-brain-tumor-detection.git
+     ```
+     then work in `t20-brain-tumor-detection/` — `data/` and `split_manifest.csv` come with it.
+   - **Option B (local path):** clone on your machine, upload `data/` to Colab's session storage, set `ROOT = "/content/data"`.
 3. Copy your notebook into Colab; **prepend the manifest path fix** (shared_cells.py CELL C):
-   `df["path"] = "/content/drive/MyDrive/T20/" + df["path"]`
+   adjust `df["path"]` to wherever you put `data/` (e.g. `"/content/t20-brain-tumor-detection/" + df["path"]`).
 4. Paste shared cells A–G verbatim. Cell D = augmentation spec (implement it in your framework's API).
 
 ## 3. The experiment grid — 4 runs TODAY (same in both frameworks)
@@ -65,10 +74,16 @@ Save the figures into the notebook outputs (they must be visible when the notebo
    git add notebooks/<yours>.ipynb results/metrics_<yours>.json
    git commit -m "<fw>: R1-R4, final eval, GradCAM"; git push
    ```
-2. Export the final model → upload to the shared Google Drive folder as `model_T20.<ext>`.
+2. Export the final model, then commit and push it too (everything lives on GitHub):
+   ```bash
+   git add model/model_T20.<pt|keras>
+   git commit -m "<fw>: final model"; git push
+   ```
+   ⚠️ GitHub rejects files >100 MB — check `ls -lh model/` first. EfficientNet-B0 (~20 MB) is
+   always safe; ResNet50 (~90–100 MB) may need half-precision export. Tell Seif if a push fails.
 3. Write your report section (plan §8, sections 4 & 5: architecture, transfer-learning setup,
-   hyperparameters, loss curves, test metrics, confusion matrix) and send it to Seif (or push as
-   `report/section_<fw>.md`).
+   hyperparameters, loss curves, test metrics, confusion matrix) — fill
+   `report/section_<yours>.md` and push it, or send it to Seif.
 
 ## 7. Rules that cost marks (plan Section 0)
 
