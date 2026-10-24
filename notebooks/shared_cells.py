@@ -41,7 +41,7 @@ seed_everything()
 # ------------------------------------------------------------
 # The dataset (data/) and the manifest are both IN THE REPO — after
 # `git clone`, paths just work if the notebook runs from the repo root.
-# On Colab: clone the repo (TEAMMATES.md §2) and prefix once, e.g.
+# On Colab: clone the repo (TEAM_PLAN.md §6) and prefix once, e.g.
 #   df["path"] = "/content/t20-brain-tumor-detection/" + df["path"]
 # Never re-generate the split.
 # import pandas as pd

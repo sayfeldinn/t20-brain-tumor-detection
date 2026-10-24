@@ -34,7 +34,7 @@ MODEL_GLOBS = ["model/model_T20.pt", "model/model_T20.keras"]
 EXCLUDE_NAMES = {".git", ".venv", "venv", "__pycache__", ".ipynb_checkpoints",
                  "tools", "tests", "report", "results", "wandb", "checkpoints"}
 EXCLUDE_SUFFIXES = {".pyc", ".ckpt", ".pth"}
-EXCLUDE_FILES = {".gitignore", ".gitattributes", "README.md", "TEAMMATES.md",
+EXCLUDE_FILES = {".gitignore", ".gitattributes", "README.md", "TEAM_PLAN.md",
                  "split_manifest.csv",            # not in Section 1 tree; manifest is dev-only
                  "notebooks/shared_cells.py",     # dev reference; cells are pasted into notebooks
                  "notebooks/README_split.md"}

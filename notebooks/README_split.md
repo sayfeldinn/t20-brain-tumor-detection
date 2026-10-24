@@ -27,6 +27,6 @@ print(df.groupby(["split", "label"]).size().unstack())
 
 Paths in the manifest are relative to the repo root (`data/Training/...`).
 The dataset is committed to the repo, so after `git clone` the paths work as-is.
-Colab: clone the repo and prefix with the clone directory (see TEAMMATES.md §2):
+Colab: clone the repo and prefix with the clone directory (see TEAM_PLAN.md §6):
 `df["path"] = "/content/t20-brain-tumor-detection/" + df["path"]` — keep the same
 manifest rows; only the prefix differs (document the prefix rule in the notebook header).
