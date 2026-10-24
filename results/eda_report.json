@@ -1,0 +1,63 @@
+{
+  "total_images": 7200,
+  "counts": {
+    "test/glioma": 400,
+    "test/meningioma": 400,
+    "test/notumor": 400,
+    "test/pituitary": 400,
+    "train/glioma": 1190,
+    "train/meningioma": 1190,
+    "train/notumor": 1190,
+    "train/pituitary": 1190,
+    "val/glioma": 210,
+    "val/meningioma": 210,
+    "val/notumor": 210,
+    "val/pituitary": 210
+  },
+  "extensions": {
+    ".jpg": 7200
+  },
+  "modes": {
+    "L": 3067,
+    "RGB": 4129,
+    "RGBA": 3,
+    "P": 1
+  },
+  "distinct_sizes": 447,
+  "top_sizes": {
+    "(512, 512)": 5014,
+    "(225, 225)": 338,
+    "(630, 630)": 90,
+    "(201, 251)": 57,
+    "(228, 221)": 51,
+    "(232, 217)": 50,
+    "(442, 442)": 48,
+    "(236, 236)": 48,
+    "(150, 198)": 44,
+    "(200, 252)": 43
+  },
+  "corrupt_files": [],
+  "duplicate_groups": 153,
+  "duplicate_files_involved": 340,
+  "leakage_hashes_across_splits": 0,
+  "cross_label_duplicate_groups": 0,
+  "split_totals": {
+    "train": 4760,
+    "test": 1600,
+    "val": 840
+  },
+  "leakage_after_split": {
+    "test_vs_trainval_groups": 0,
+    "train_vs_val_duplicate_groups": 42,
+    "val_images_duplicated_in_train": 44,
+    "val_total": 840,
+    "val_leak_pct": 5.2,
+    "leaked_val_by_class": {
+      "notumor": 30,
+      "pituitary": 10,
+      "meningioma": 4,
+      "glioma": 0
+    },
+    "decision": "kept per contract (no resplit); reported as limitation in report Section 9"
+  }
+}
