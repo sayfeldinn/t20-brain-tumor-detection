@@ -1,0 +1,23 @@
+# dataset and trained models — synced via Drive, added only when building the ZIP
+data/
+model/*.pt
+model/*.keras
+*.zip
+
+# secrets
+kaggle.json
+*.token
+
+# training artifacts (excluded from ZIP too)
+checkpoints/
+*.ckpt
+*.pth
+runs/
+wandb/
+
+# python / notebooks / envs
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

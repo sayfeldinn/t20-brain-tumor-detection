@@ -1,0 +1,10 @@
+# T20 — API dependencies (CPU-only, offline at runtime)
+# Versions pinned during integration (Role 1); see report appendix for the tested set.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pillow==11.1.0
+numpy==2.2.1
+# CPU-only PyTorch build (TorchScript model served)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
