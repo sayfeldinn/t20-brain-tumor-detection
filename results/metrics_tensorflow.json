@@ -1,0 +1,32 @@
+{
+  "_template": "Role 1 collects ONE entry per run (R1..R5) per framework, from notebook outputs. Fields below are the plan's metrics log.",
+  "runs": [
+    {
+      "framework": "tensorflow",
+      "architecture": "ResNet50",
+      "strategy": "frozen_backbone",
+      "run_id": "R1",
+      "epochs_run": null,
+      "seconds_per_epoch": null,
+      "total_train_seconds": null,
+      "peak_gpu_memory_mb": null,
+      "trainable_params": null,
+      "total_params": null,
+      "saved_model_size_mb": null,
+      "best_val_loss": null,
+      "best_val_acc": null,
+      "notes": ""
+    }
+  ],
+  "final_model": {
+    "selected_run": null,
+    "test_accuracy": null,
+    "macro_precision": null,
+    "macro_recall": null,
+    "macro_f1": null,
+    "per_class": {},
+    "confusion_matrix": [],
+    "gradcam_done": false,
+    "model_file_mb": null
+  }
+}
