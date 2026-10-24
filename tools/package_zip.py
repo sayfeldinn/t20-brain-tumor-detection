@@ -75,6 +75,11 @@ def main() -> None:
     want = f"model/model_{TEAM_ID}.pt" if framework == "pytorch" else f"model/model_{TEAM_ID}.keras"
     if not (ROOT / want).is_file():
         fail(f"missing model file: {want} (FRAMEWORK={framework})")
+    # reject the 6KB dummy model from tools/make_dummy_model.py (contract-testing only!)
+    size_mb = (ROOT / want).stat().st_size / 1e6
+    if size_mb < 5:
+        fail(f"{want} is only {size_mb:.1f} MB — that's the dummy model, not a trained one. "
+             f"Replace it with the final export from the winning run before packaging.")
     # stale model of the other framework is excluded automatically by glob logic below
 
     # notebook outputs saved? (nbformat: outputs list non-empty)
