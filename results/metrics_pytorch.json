@@ -6,27 +6,125 @@
       "architecture": "ResNet50",
       "strategy": "frozen_backbone",
       "run_id": "R1",
-      "epochs_run": null,
-      "seconds_per_epoch": null,
-      "total_train_seconds": null,
-      "peak_gpu_memory_mb": null,
-      "trainable_params": null,
-      "total_params": null,
-      "saved_model_size_mb": null,
-      "best_val_loss": null,
-      "best_val_acc": null,
-      "notes": ""
+      "epochs_run": 10,
+      "seconds_per_epoch": 23.94,
+      "total_train_seconds": 278.97,
+      "peak_gpu_memory_mb": 569,
+      "trainable_params": 8196,
+      "total_params": 23516228,
+      "saved_model_size_mb": 90.01,
+      "best_val_loss": 0.2922,
+      "best_val_acc": 0.9024,
+      "notes": "Adam lr=0.001, batch=32, frozen backbone, BN in eval mode"
+    },
+    {
+      "framework": "pytorch",
+      "architecture": "EfficientNet-B0",
+      "strategy": "frozen_backbone",
+      "run_id": "R3",
+      "epochs_run": 14,
+      "seconds_per_epoch": 22.88,
+      "total_train_seconds": 365.98,
+      "peak_gpu_memory_mb": 419,
+      "trainable_params": 5124,
+      "total_params": 4012672,
+      "saved_model_size_mb": 15.6,
+      "best_val_loss": 0.2085,
+      "best_val_acc": 0.9286,
+      "notes": "Adam lr=1e-3, batch=32, frozen backbone, BN in eval mode, head dropout active"
+    },
+    {
+      "framework": "pytorch",
+      "architecture": "EfficientNet-B0",
+      "strategy": "fine_tune_last_block",
+      "run_id": "R4",
+      "epochs_run": 12,
+      "seconds_per_epoch": 23.25,
+      "total_train_seconds": 320.22,
+      "peak_gpu_memory_mb": 424,
+      "trainable_params": 417284,
+      "total_params": 4012672,
+      "saved_model_size_mb": 15.6,
+      "best_val_loss": 0.2005,
+      "best_val_acc": 0.9298,
+      "notes": "Adam lr=1e-4, batch=32, fine-tune features[-1], BN in eval mode, head dropout active"
+    },
+    {
+      "framework": "pytorch",
+      "architecture": "ResNet50",
+      "strategy": "fine_tune_layer4",
+      "run_id": "R2",
+      "epochs_run": 11,
+      "seconds_per_epoch": 25.99,
+      "total_train_seconds": 330.64,
+      "peak_gpu_memory_mb": 765,
+      "trainable_params": 14972932,
+      "total_params": 23516228,
+      "saved_model_size_mb": 90.01,
+      "best_val_loss": 0.0513,
+      "best_val_acc": 0.9821,
+      "notes": "Adam lr=1e-4, batch=32, fine-tune layer4, BN in eval mode (final model, retrained with same seed)"
     }
   ],
   "final_model": {
-    "selected_run": null,
-    "test_accuracy": null,
-    "macro_precision": null,
-    "macro_recall": null,
-    "macro_f1": null,
-    "per_class": {},
-    "confusion_matrix": [],
-    "gradcam_done": false,
-    "model_file_mb": null
+    "selected_run": "R2",
+    "test_accuracy": 0.94,
+    "macro_precision": 0.944,
+    "macro_recall": 0.94,
+    "macro_f1": 0.9387,
+    "per_class": {
+      "glioma": {
+        "precision": 0.9847,
+        "recall": 0.8025,
+        "f1-score": 0.8843,
+        "support": 400.0
+      },
+      "meningioma": {
+        "precision": 0.8846,
+        "recall": 0.9775,
+        "f1-score": 0.9287,
+        "support": 400.0
+      },
+      "notumor": {
+        "precision": 0.9217,
+        "recall": 1.0,
+        "f1-score": 0.9592,
+        "support": 400.0
+      },
+      "pituitary": {
+        "precision": 0.9849,
+        "recall": 0.98,
+        "f1-score": 0.9825,
+        "support": 400.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        321,
+        45,
+        31,
+        3
+      ],
+      [
+        3,
+        391,
+        3,
+        3
+      ],
+      [
+        0,
+        0,
+        400,
+        0
+      ],
+      [
+        2,
+        6,
+        0,
+        392
+      ]
+    ],
+    "gradcam_done": true,
+    "model_file_mb": 90.27
   }
 }
